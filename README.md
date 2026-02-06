@@ -1,4 +1,4 @@
-# 🛡️ IOC Manager - Gestor de Indicadores de Compromiso
+# IOC Manager - Gestor de Indicadores de Compromiso
 
 Sistema centralizado para equipos de **Blue Team / SOC** que permite gestionar Indicadores de Compromiso (IOCs) mediante una API REST documentada con Swagger.
 
@@ -6,16 +6,16 @@ Sistema centralizado para equipos de **Blue Team / SOC** que permite gestionar I
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## 📋 Características
+## Características
 
-- ✅ **API REST** documentada automáticamente con Swagger/OpenAPI
-- ✅ **Registro de IOCs** desde scripts o herramientas externas
-- ✅ **Dashboard web** para visualización de amenazas
-- ✅ **Filtros** por tipo y severidad
-- ✅ **Estadísticas** en tiempo real
-- ✅ **Despliegue** con Docker (un solo comando)
+- **API REST** documentada automáticamente con Swagger/OpenAPI
+- **Registro de IOCs** desde scripts o herramientas externas
+- **Dashboard web** para visualización de amenazas
+- **Filtros** por tipo y severidad
+- **Estadísticas** en tiempo real
+- **Despliegue** con Docker (un solo comando)
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ```
 ┌─────────────────┐     POST /api/threats     ┌──────────────────┐
@@ -34,7 +34,7 @@ Sistema centralizado para equipos de **Blue Team / SOC** que permite gestionar I
                                               └──────────────────┘
 ```
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 ### Opción 1: Docker Compose (Recomendado)
 
@@ -67,7 +67,7 @@ uvicorn app.main:app --reload --port 8000
 # O servir con: python -m http.server 8080 -d frontend
 ```
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Método | Endpoint | Descripción |
 |--------|----------|-------------|
@@ -102,7 +102,7 @@ curl "http://localhost:8000/api/threats"
 curl "http://localhost:8000/api/threats?type=IP&severity=High"
 ```
 
-## 📊 Modelo de Datos
+## Modelo de Datos
 
 ### Tabla `threats`
 
@@ -115,7 +115,7 @@ curl "http://localhost:8000/api/threats?type=IP&severity=High"
 | `date_detected` | DateTime | Fecha de registro |
 | `source` | String | Fuente del IOC (opcional) |
 
-## 🔧 Configuración
+## Configuración
 
 ### Variables de Entorno
 
@@ -130,24 +130,7 @@ curl "http://localhost:8000/api/threats?type=IP&severity=High"
 DATABASE_URL=postgresql://user:password@host:5432/ioc_manager
 ```
 
-## 📦 Despliegue en Producción (Gratuito)
-
-### Render.com
-
-1. Crear cuenta en [render.com](https://render.com)
-2. Nuevo Web Service → Conectar repositorio
-3. Build Command: `pip install -r backend/requirements.txt`
-4. Start Command: `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
-5. Agregar variable `DATABASE_URL` (usar PostgreSQL de Render)
-
-### Railway
-
-1. Crear cuenta en [railway.app](https://railway.app)
-2. New Project → Deploy from GitHub
-3. Agregar PostgreSQL desde el marketplace
-4. El deploy es automático
-
-## 🛠️ Desarrollo
+## Desarrollo
 
 ### Estructura del Proyecto
 
@@ -192,7 +175,7 @@ report_ioc("IP", "10.0.0.100", "High", "IDS-Suricata")
 report_ioc("Hash", "a1b2c3d4e5f6...", "Medium", "VirusTotal")
 ```
 
-## 📄 Licencia
+## Licencia
 
 MIT License - Libre para uso y modificación.
 
