@@ -7,8 +7,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Use DATABASE_URL env var or default to SQLite for local development
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ioc_manager.db")
+# Use DATABASE_URL env var or default to SQLite
+# In Docker, uses /app/data/ which is mounted as a persistent volume
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:////app/data/ioc_manager.db")
 
 # Handle PostgreSQL URLs from cloud providers (they use postgres://)
 if DATABASE_URL.startswith("postgres://"):

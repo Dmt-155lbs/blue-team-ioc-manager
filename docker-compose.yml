@@ -13,7 +13,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///./ioc_manager.db
+      # SQLite database in persistent volume (/app/data is mounted below)
+      - DATABASE_URL=sqlite:////app/data/ioc_manager.db
     volumes:
       # Persist SQLite database
       - ./data:/app/data
