@@ -7,7 +7,8 @@ from typing import Optional, List
 from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.openapi.docs import get_redoc_html
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 import os
@@ -51,7 +52,7 @@ API REST para equipos de Blue Team que permite:
         "url": "https://opensource.org/licenses/MIT",
     },
     docs_url="/docs",
-    redoc_url="/redoc",
+    redoc_url=None,  # Custom ReDoc with stable version
 )
 
 # CORS configuration - allow frontend to communicate with API
@@ -62,6 +63,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# ==================== Custom ReDoc ====================
+
+@app.get("/redoc", include_in_schema=False)
+async def redoc_html():
+    """Serve ReDoc with a stable version instead of @next."""
+    return get_redoc_html(
+        openapi_url=app.openapi_url,
+        title=app.title + " - ReDoc",
+        redoc_js_url="https://cdn.jsdelivr.net/npm/redoc@2.1.3/bundles/redoc.standalone.js",
+    )
 
 
 # ==================== Health Check ====================
