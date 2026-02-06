@@ -191,7 +191,7 @@ def get_statistics(db: Session = Depends(get_db)):
 # ==================== Serve Frontend ====================
 
 # Check if frontend directory exists (for Docker deployment)
-frontend_path = os.path.join(os.path.dirname(__file__), "..", "..", "frontend")
+frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend")
 if os.path.exists(frontend_path):
     app.mount("/static", StaticFiles(directory=frontend_path), name="static")
     
